@@ -2,7 +2,7 @@
 import java.util.Scanner;
 
 public class Adder {
-	public static int a,b,A,B,Cin,s,C,Cout;
+	public static int a,b,fa,fb,Cin,s,C,Cout;
 	public static void main(String[] args){
 		String newLine = System.getProperty("line.separator");
 		System.out.print("Please select 1, 2, 3"+ newLine +"1	: Half Adder"+ newLine +"2	: Full Adder"+ newLine +"3	: Truth table"+newLine); 
@@ -25,17 +25,18 @@ public class Adder {
 					System.out.print(a+"	"); 
 					System.out.print(b+"	"); 
 					System.out.print(s+"	"); 
-					System.out.print(C); 
+					System.out.print(C);
+					
 					break;
         		}else if(x==2){
         			while(true){
 						System.out.print("input A : ");
-						A = scan.nextInt();
+						fa = scan.nextInt();
 						if(a==0||a==1) break;
 						System.out.print("try again"+ newLine);
 					}while(true){
 						System.out.print("input B : ");
-						B = scan.nextInt();
+						fb = scan.nextInt();
 						if(a==0||a==1) break;
 						System.out.print("try again"+ newLine);
 					}while(true){
@@ -45,11 +46,12 @@ public class Adder {
 						System.out.print("try again"+ newLine);
 					}full();
 					System.out.print("A	B	Cin	S	Cout"+newLine);
-					System.out.print(A+"	"); 
-					System.out.print(B+"	"); 
+					System.out.print(fa+"	"); 
+					System.out.print(fb+"	"); 
 					System.out.print(Cin+"	"); 
 					System.out.print(s+"	"); 
-					System.out.print(Cout); 
+					System.out.print(Cout);
+					
 					break;
         		}else if(x==3){
 					table();
@@ -84,14 +86,16 @@ public class Adder {
 	public static void full(){
 		int out3,out4,out5;
 		a=Cin;
-		b=B;
+		b=fb;
 		half();
 		out3=s;
 		out4=C;
+		
 		a=out4;
-		b=A;
+		b=fa;
 		half();
 		out5=s;
+		s=C;  //edit w7o2245
 		if(out3==1||out5==1){
 			Cout=1;
 		}else{
@@ -112,12 +116,12 @@ public class Adder {
 			}
 		}
 		System.out.print(newLine+"A	B	Cin	S	Cout"+newLine);
-		for(A=1;A==1||A==0;A--){
-			for(B=1;B==1||B==0;B--){
+		for(fa=1;fa==1||fa==0;fa--){
+			for(fb=1;fb==1||fb==0;fb--){
 				for(Cin=1;Cin==1||Cin==0;Cin--){
 					full();
-					System.out.print(A+"	"); 
-					System.out.print(B+"	"); 
+					System.out.print(fa+"	"); 
+					System.out.print(fb+"	"); 
 					System.out.print(Cin+"	"); 
 					System.out.print(s+"	"); 
 					System.out.print(Cout+newLine); 
